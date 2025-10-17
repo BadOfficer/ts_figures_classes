@@ -23,11 +23,11 @@ export class Triangle implements Figure {
     c: number,
   ) {
     if (a <= 0 || b <= 0 || c <= 0) {
-      throw new Error('Side cannot be an equal zero');
+      throw new Error(`Side lengths must be > 0: a=${a}, b=${b}, c=${c}`);
     }
 
     if (!this.canTriangleExist(a, b, c)) {
-      throw new Error('Trangle can`t exist!');
+      throw new Error(`Sides ${a}, ${b}, ${c} cannot form a triangle`);
     }
 
     this.a = a;
@@ -49,7 +49,7 @@ export class Triangle implements Figure {
 
     const area = Math.sqrt(p * (p - a) * (p - b) * (p - c));
 
-    return +area.toFixed(2);
+    return Math.floor(area * 100) / 100;
   }
 }
 
@@ -66,7 +66,7 @@ export class Rectangle implements Figure {
     b: number,
   ) {
     if (a <= 0 || b <= 0) {
-      throw new Error('Side cannot be an equal zero');
+      throw new Error(`Side lengths must be > 0: a=${a}, b=${b}`);
     }
 
     this.a = a;
@@ -76,7 +76,9 @@ export class Rectangle implements Figure {
   getArea(): number {
     const { a, b } = this;
 
-    return +(a * b).toFixed(2);
+    const area = a * b;
+
+    return Math.floor(area * 100) / 100;
   }
 }
 
