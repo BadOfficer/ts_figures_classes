@@ -92,7 +92,7 @@ export class Circle implements Figure {
     radius: number,
   ) {
     if (radius <= 0) {
-      throw new Error('Radius must be more than 0');
+      throw new Error(`Radius must be > 0: radius=${radius}`);
     }
 
     this.radius = radius;
